@@ -1,0 +1,14 @@
+﻿@page "/admin-panel"
+@attribute [Authorize(Roles = "Admin,SuperAdmin")]
+@using AuthorizeRouteViewBlazorServer.Data
+@inject WebsiteAuthenticator WebsiteAuthenticator
+
+<h3>AdminPanel</h3>
+<button type="button" @onclick="TryLogout">Logout</button>
+
+@code {
+    private async Task TryLogout()
+    {
+        await WebsiteAuthenticator.LogoutAsync();
+    }
+} 
